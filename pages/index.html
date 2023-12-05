@@ -8,9 +8,79 @@
   </head>
   <body>
     <%- include('./layout/header'); -%>
-
+    <section>
+      <div class="container">
+        <div class="header d-flex align-items-end">
+          <h2 class="text-white fs-1 fw-normal">窩窩家居 <br> 跟您一起品味生活</h2>
+        </div>
+        <div class="advantage">
+          <div class="fs-2 text-center title">床墊優勢</div>
+          <ul class="d-flex justify-content-between p-0 m-0">
+            <li>
+              <img src="https://github.com/xuannn0915/JS-Final/blob/main/assets/images/advantage-3.png?raw=true" alt="advantagePic">
+              <div class="fs-4 text-center">原木料環保</div>
+            </li>
+            <li>
+              <img src="https://github.com/xuannn0915/JS-Final/blob/main/assets/images/advantage-2.png?raw=true" alt="advantagePic">
+              <div class="fs-4 text-center">好收納</div>
+            </li>
+            <li>
+              <img src="https://github.com/xuannn0915/JS-Final/blob/main/assets/images/advantage-1.png?raw=true" alt="advantagePic">
+              <div class="fs-4 text-center">好組裝</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="compare bg-light">
+      <div class="container">
+        <div class="fs-2 text-center">家具比較</div>
+        <table class="table table-light mx-auto">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center" style="width:150px"></th>
+              <th scope="col" class="text-center" style="width:auto">窩窩系統模組家具</th>
+              <th scope="col" class="text-center" style="width:auto">組合式家具</th>
+              <th scope="col" class="text-center" style="width:auto">實木家具</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">可單人自行組裝</th>
+              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center">不一定</td>
+              <td class="text-center"></td>
+            </tr>
+            <tr>
+              <th scope="row">可多次重複拆裝</th>
+              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+            </tr>
+            <tr>
+              <th scope="row">床墊規格彈性大</th>
+              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center">不一定</td>
+              <td class="text-center">不一定</td>
+            </tr>
+            <tr>
+              <th scope="row">材質可長久使用</th>
+              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center"></td>
+              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+            </tr>
+            <tr>
+              <th scope="row">小客車即可搬運</th>
+              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
     <%- include('./layout/footer'); -%>
-
+    <script src="https://kit.fontawesome.com/e04d5b3e23.js" crossorigin="anonymous"></script>
     <script type="module" src="../main.js"></script>
   </body>
 </html>

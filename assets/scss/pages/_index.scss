@@ -1,3 +1,23 @@
-.index-title {
-  font-size: 100px;
+.header{
+  background-image: url('https://github.com/xuannn0915/JS-Final/blob/main/assets/images/banner.png?raw=true');
+  height: 420px;
+  padding: 48px 52px;
+  margin-bottom: 60px;
+}
+
+.advantage{
+  margin-bottom: 60px;
+  .title{
+    margin-bottom: 28px;
+  }
+  img{
+    margin-bottom: 8px;
+  }
+}
+
+.compare{
+  padding: 48px 0;
+  .table{
+    width: 730px;
+  }
 }
