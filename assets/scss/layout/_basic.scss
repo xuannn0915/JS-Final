@@ -18,6 +18,11 @@ a{
   text-decoration: none;
 }
 
+ol,ul,li,h1,h2,h3,p{
+  margin: 0;
+  padding: 0;
+}
+
 .container{
   width: 1110px;
 }  
