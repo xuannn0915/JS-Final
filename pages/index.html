@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>index</title>
+    <title>JS直播班Final</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   </head>
   <body>
     <%- include('./layout/header'); -%>
@@ -34,44 +35,44 @@
     </section>
     <section class="compare bg-light">
       <div class="container">
-        <div class="fs-2 text-center">家具比較</div>
-        <table class="table table-light mx-auto">
+        <div class="fs-2 text-center title">家具比較</div>
+        <table class="table table-light mx-auto fs-4 align-middle">
           <thead>
             <tr>
-              <th scope="col" class="text-center" style="width:150px"></th>
+              <th scope="col" class="text-center" style="width:180px"></th>
               <th scope="col" class="text-center" style="width:auto">窩窩系統模組家具</th>
-              <th scope="col" class="text-center" style="width:auto">組合式家具</th>
-              <th scope="col" class="text-center" style="width:auto">實木家具</th>
+              <th scope="col" class="text-center text-dark" style="width:auto">組合式家具</th>
+              <th scope="col" class="text-center text-dark" style="width:auto">實木家具</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr >
               <th scope="row">可單人自行組裝</th>
-              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
-              <td class="text-center">不一定</td>
+              <td class="text-center fs-2"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center text-dark">不一定</td>
               <td class="text-center"></td>
             </tr>
             <tr>
               <th scope="row">可多次重複拆裝</th>
-              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center fs-2"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
               <td class="text-center"></td>
               <td class="text-center"></td>
             </tr>
             <tr>
               <th scope="row">床墊規格彈性大</th>
-              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
-              <td class="text-center">不一定</td>
-              <td class="text-center">不一定</td>
+              <td class="text-center fs-2"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center text-dark">不一定</td>
+              <td class="text-center text-dark">不一定</td>
             </tr>
             <tr>
               <th scope="row">材質可長久使用</th>
-              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center fs-2"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
               <td class="text-center"></td>
-              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center fs-2"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
             </tr>
             <tr>
               <th scope="row">小客車即可搬運</th>
-              <td class="text-center"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
+              <td class="text-center fs-2"><i class="fa-solid fa-check" style="color:#6a33ff"></i></td>
               <td class="text-center"></td>
               <td class="text-center"></td>
             </tr>
@@ -79,8 +80,25 @@
         </table>
       </div>
     </section>
+    <section class="comment bg-primary">
+      <div class="container position-relative">
+        <div class="fs-2 text-center text-white title">好評推薦</div>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+          </div>
+        </div>
+      </div>
+    </section>
     <%- include('./layout/footer'); -%>
-    <script src="https://kit.fontawesome.com/e04d5b3e23.js" crossorigin="anonymous"></script>
-    <script type="module" src="../main.js"></script>
+    <%- include('./layout/script'); -%>
   </body>
 </html>
