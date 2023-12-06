@@ -45,7 +45,7 @@
 }
 
 .deliver{
-  padding: 32px 0 60px 0;
+  padding: 32px 0 72px 0;
   &-icon{
     display: flex;
     align-items: center;
@@ -57,8 +57,43 @@
     border-radius: 50%;
     margin-bottom: 8px;
   }
-  li::after{
+  li:nth-child(n+2)::before{
     content:'';
-    background-image: url('');
+    background-image: url('https://raw.githubusercontent.com/xuannn0915/JS-Final/8e3efd846769f88139bcc58e219dad8c122d8776/assets/images/caret-right-solid.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 40px;
+    right: 120%;
   }
+}
+
+.product{
+  padding-bottom: 60px;
+  select{
+    padding: 8px 12px;
+    margin-bottom: 32px;
+  }
+
+  .card-pic{
+    height: 302px;
+    object-fit: cover;
+  }
+
+  li{
+    margin-bottom: 26px;
+  }
+
+  .tag{
+    padding: 8px 24px;
+    top: 12px;
+    right: -4px;
+  }
+}
+
+.shoppingCart{
+  padding: 48px 0 70px 0;
 }
