@@ -9,11 +9,14 @@
   </head>
   <body>
     <%- include('./layout/header'); -%>
-    <section>
+    <main>
       <div class="container">
+        <!-- banner -->
         <div class="header d-flex align-items-end">
           <h2 class="text-white fs-1 fw-normal">窩窩家居 <br> 跟您一起品味生活</h2>
         </div>
+
+        <!-- 床墊優勢 -->
         <div class="advantage">
           <div class="fs-2 text-center title">床墊優勢</div>
           <ul class="d-flex justify-content-between">
@@ -32,7 +35,9 @@
           </ul>
         </div>
       </div>
-    </section>
+    </main>
+
+    <!-- 家具比較 -->
     <section class="compare bg-light">
       <div class="container">
         <div class="title">家具比較</div>
@@ -80,6 +85,8 @@
         </table>
       </div>
     </section>
+
+    <!-- 好評推薦 -->
     <section class="comment bg-primary">
       <div class="container position-relative">
         <div class="text-white title">好評推薦</div>
@@ -197,8 +204,11 @@
         </div>
       </div>
     </section>
+
+
     <section>
       <div class="container">
+        <!-- 運送方式 -->
         <div class="deliver">
           <div class="title">運送方式</div>
           <div class="row">
@@ -234,10 +244,8 @@
             </ul>
           </div>     
         </div>
-      </div>
-    </section>
-    <section>
-      <div class="container">
+
+        <!-- 商品列表 -->
         <div class="product row">
           <div class="col-3">
             <select name="productSelect" id="productSelect" class="w-100 border-input">
@@ -252,13 +260,102 @@
         </div>
       </div>
     </section>
+
+    <!-- 我的購物車 -->
     <section>
       <div class="shoppingCart bg-light">
         <div class="container">
           <div class="title">我的購物車</div>
+          <div class="row">
+            <div class="col-10 mx-auto">
+              <table class="table mx-auto table-light">
+                <thead>
+                  <tr>
+                    <th scope="col" colspan="2">品項</th>
+                    <th scope="col">單價</th>
+                    <th scope="col">數量</th>
+                    <th scope="col" colspan="2">全部</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="width: 100px;">
+                      <img src="https://github.com/xuannn0915/JS-Final/blob/main/assets/images/recommend-1.png?raw=true" alt="" class="cart-pic">
+                    </td>
+                    <td>
+                      <p class="cart-name">Antony 雙人床架／雙人加大</p>
+                    </td>
+                    <td class="cart-singlePrice">
+                        NT$12,000
+                    </td>
+                    <td style="width: 100px;" class="cart-num">1</td>
+                    <td class="cart-totalPrice">
+                      NT$12,000
+                    </td>
+                    <td style="width: 60px;">
+                      <div class="btn cart-delete">
+                        <i class="fa-solid fa-xmark fs-2" class="fs-1"></i>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px;">
+                      <img src="https://github.com/xuannn0915/JS-Final/blob/main/assets/images/recommend-1.png?raw=true" alt="" class="cart-pic">
+                    </td>
+                    <td>
+                      <p class="cart-name">Antony 雙人床架／雙人加大</p>
+                    </td>
+                    <td class="cart-singlePrice">
+                        NT$12,000
+                    </td>
+                    <td style="width: 100px;" class="cart-num">1</td>
+                    <td class="cart-totalPrice">
+                      NT$12,000
+                    </td>
+                    <td style="width: 60px;">
+                      <div class="btn cart-delete">
+                        <i class="fa-solid fa-xmark fs-2" class="fs-1"></i>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px;">
+                      <img src="https://github.com/xuannn0915/JS-Final/blob/main/assets/images/recommend-1.png?raw=true" alt="" class="cart-pic">
+                    </td>
+                    <td>
+                      <p class="cart-name">Antony 雙人床架／雙人加大</p>
+                    </td>
+                    <td class="cart-singlePrice">
+                        NT$12,000
+                    </td>
+                    <td style="width: 100px;" class="cart-num">1</td>
+                    <td class="cart-totalPrice">
+                      NT$12,000
+                    </td>
+                    <td style="width: 60px;">
+                      <div class="btn cart-delete">
+                        <i class="fa-solid fa-xmark fs-2" class="fs-1"></i>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="btn btn-outline-black deleteAll">刪除所有品項</div>
+                <p>
+                  總金額
+                  <span class="total fs-3 cart-finalPrice">NT$13,980</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+
+
+
     <%- include('./layout/script'); -%>
   </body>
 </html>

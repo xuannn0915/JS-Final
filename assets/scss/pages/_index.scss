@@ -92,8 +92,33 @@
     top: 12px;
     right: -4px;
   }
+  .btn{
+    background-color: $black;
+    &:hover{
+      background-color: $primary;
+    }
+  }
 }
 
 .shoppingCart{
   padding: 48px 0 70px 0;
+
+  img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  td{
+    padding: 20px 20px 20px 0;
+  }
+
+  th{
+    border: 0;
+    padding: 0px 20px 0px 0;
+  }
+
+  span{
+    margin-left: 32px;
+  }
 }

@@ -27,7 +27,7 @@ function renderProductList(data){
     <div class="card border-0 position-relative">
       <div class="text-white bg-black tag position-absolute">${item.category}</div>
       <img src=${item.images} alt="" class="card-pic">
-      <div class="btn btn-black rounded-0 card-btn mb-2">加入購物車</div>
+      <div class="btn text-white rounded-0 card-btn mb-2">加入購物車</div>
       <div class="card-body p-0">
         <p class="productName mb-2">${item.title}</p>
         <p class="oldPrice text-decoration-line-through">NT${item.origin_price}</p>
