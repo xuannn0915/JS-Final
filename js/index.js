@@ -5,8 +5,12 @@ const api_path = "xuan";
 const token = "SilbCe0IbhXlbMHF9Eu6JUataJQ2";
 const productList = document.querySelector(".productList");
 const productSelect = document.querySelector("#productSelect");
+const tableBody = document.querySelector(".table-body");
+const cartFinalPrice = document.querySelector(".cart-finalPrice");
+const deleteAll = document.querySelector('.deleteAll');
 
-let productData;
+let productData=[];
+let cartData=[];
 
 function init() {
   axios
@@ -43,7 +47,69 @@ function renderProductList(data) {
   productList.innerHTML = content;
 }
 
-function selectProductList(e) {
+function renderShoppingCart() {
+  axios
+    .get(
+      `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`
+    )
+    .then(function (response) {
+      cartData = response.data.carts;
+      let shoppingCartStr = "";
+      cartData.forEach(function (item) {
+        shoppingCartStr += `<tr>
+        <td style="width: 100px;">
+          <img src="${item.product.images}" alt="" class="cart-pic">
+        </td>
+        <td>
+          <p class="cart-name">${item.product.title}</p>
+        </td>
+        <td class="cart-singlePrice">
+            ${item.product.price}
+        </td>
+        <td style="width: 100px;" class="cart-num">${item.quantity}</td>
+        <td class="cart-totalPrice">
+        ${item.product.price * item.quantity}
+        </td>
+        <td style="width: 60px;">
+          <div class="btn cart-delete">
+            <i class="fa-solid fa-xmark fs-2" class="fs-1"></i>
+          </div>
+        </td>
+      </tr>`;
+        tableBody.innerHTML = shoppingCartStr;
+        cartFinalPrice.textContent = `NT$${response.data.finalTotal}`;
+      });
+    });
+}
+
+function addShoppingCart(id) {
+  let numCheck = 1;
+  cartData.forEach(function (item) {
+    if (item.product.id === id) {
+      numCheck += 1;
+    }
+  });
+  axios
+    .post(
+      `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`,
+      {
+        data: {
+          productId: id,
+          quantity: numCheck,
+        },
+      }
+    )
+    .then(function (response) {
+      renderShoppingCart();
+    })
+    .catch(function (error) {
+      console.log(error.response);
+    });
+}
+
+init();
+
+productSelect.addEventListener("change", function (e) {
   e.preventDefault();
   let selectTag = e.target.value;
   let selectAry = [];
@@ -66,37 +132,36 @@ function selectProductList(e) {
     });
     renderProductList(selectAry);
   }
-}
+});
 
-function addShoppingCart(e) {
-  e.preventDefault();
-  if (e.target.nodeName !== "INPUT") {
-    return;
+productList.addEventListener("click", function (e) {
+  {
+    e.preventDefault();
+    if (e.target.nodeName !== "INPUT") {
+      return;
+    }
+    alert("已將此物品加入購物車");
+    let productId = e.target.getAttribute("data-id");
+    addShoppingCart(productId);
   }
-  let productId = e.target.getAttribute("data-id");
-  // console.log(productId);
-  renderShoppingCart(productId);
-}
+});
 
-function renderShoppingCart(id) {
-  let addCartObj = {};
-  addCartObj.productId = id;
-  addCartObj.quantity = 1
-  axios
-    .post(
-      `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`,
-      {
-        data:addCartObj
-      }
-    )
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error.response);
-    });
-}
+deleteAll.addEventListener('click', function(e){
+  e.preventDefault();
+  axios.delete(`https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`)
+  .then(function (response){
+    alert('您的購物車已清空！')
+    console.log(cartData);
+    renderShoppingCart()
+  //   let str = `<tr>
+  //   <td colspan="5" class="text-center text-dark">
+  //     目前無商品內容
+  //   </td>
+  // </tr>`;
+  //   tableBody.innerHTML = str
 
-init();
-productSelect.addEventListener("change", selectProductList);
-productList.addEventListener("click", addShoppingCart);
+  })
+  .catch(function(error){
+    alert(error.response.data.message);
+  })
+})
