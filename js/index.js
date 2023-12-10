@@ -7,10 +7,10 @@ const productList = document.querySelector(".productList");
 const productSelect = document.querySelector("#productSelect");
 const tableBody = document.querySelector(".table-body");
 const cartFinalPrice = document.querySelector(".cart-finalPrice");
-const deleteAll = document.querySelector('.deleteAll');
+const deleteAll = document.querySelector(".deleteAll");
 
-let productData=[];
-let cartData=[];
+let productData = [];
+let cartData = [];
 
 function init() {
   axios
@@ -55,6 +55,13 @@ function renderShoppingCart() {
     .then(function (response) {
       cartData = response.data.carts;
       let shoppingCartStr = "";
+      if (cartData.length==0) {
+        shoppingCartStr = `<tr>
+        <td colspan="5" class="text-center text-dark">
+          目前無商品內容
+        </td>
+      </tr>`;
+      }
       cartData.forEach(function (item) {
         shoppingCartStr += `<tr>
         <td style="width: 100px;">
@@ -76,9 +83,9 @@ function renderShoppingCart() {
           </div>
         </td>
       </tr>`;
-        tableBody.innerHTML = shoppingCartStr;
-        cartFinalPrice.textContent = `NT$${response.data.finalTotal}`;
       });
+      tableBody.innerHTML = shoppingCartStr;
+      cartFinalPrice.textContent = `NT$${response.data.finalTotal}`;
     });
 }
 
@@ -146,22 +153,25 @@ productList.addEventListener("click", function (e) {
   }
 });
 
-deleteAll.addEventListener('click', function(e){
+deleteAll.addEventListener("click", function (e) {
   e.preventDefault();
-  axios.delete(`https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`)
-  .then(function (response){
-    alert('您的購物車已清空！')
-    console.log(cartData);
-    renderShoppingCart()
-  //   let str = `<tr>
-  //   <td colspan="5" class="text-center text-dark">
-  //     目前無商品內容
-  //   </td>
-  // </tr>`;
-  //   tableBody.innerHTML = str
+  axios
+    .delete(
+      `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`
+    )
+    .then(function (response) {
+      alert("確定要清空購物車？");
+      renderShoppingCart();
 
-  })
-  .catch(function(error){
-    alert(error.response.data.message);
-  })
-})
+      // let str = `<tr>
+      //   <td colspan="5" class="text-center text-dark">
+      //     目前無商品內容
+      //   </td>
+      // </tr>`;
+      //   tableBody.innerHTML = str
+      //   cartFinalPrice.textContent = `NT$${response.data.finalTotal}`;
+    })
+    .catch(function (error) {
+      alert(error.response.data.message);
+    });
+});
