@@ -1,8 +1,6 @@
 //api path:xuan
 //UID:SilbCe0IbhXlbMHF9Eu6JUataJQ2
 
-const { name } = require("ejs");
-
 const api_path = "xuan";
 const token = "SilbCe0IbhXlbMHF9Eu6JUataJQ2";
 const productList = document.querySelector(".productList");
@@ -28,16 +26,7 @@ function init() {
     .catch(function (error) {
       console.log(error.response);
     });
-  // axios
-  //   .delete(
-  //     `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`
-  //   )
-  //   .then(function (response) {
-  //     renderShoppingCart();
-  //   })
-  //   .catch(function (error) {
-  //     alert(error.response.data.message);
-  //   });
+  renderShoppingCart();
 }
 
 function renderProductList(data) {
@@ -215,32 +204,31 @@ deleteAll.addEventListener("click", function (e) {
     .catch(function (error) {
       alert(error.response.data.message);
     });
-});
+  });
+  
+  const sendInfo = document.querySelector(".sendInfo");
+  const orderForm = document.querySelector('.orderForm')
+  
+  sendInfo.addEventListener("click", function (e) {
+    if (cartData.length == 0) {
+      alert("你尚未選擇商品至購物車！");
+      return;
+    }
 
-const name = document.getElementById("name").value;
-const phone = document.getElementById("phone").value;
-const mail = document.getElementById("mail").value;
-const address = document.getElementById("address").value;
-const payment = document.getElementById("payment").value;
-const sendInfo = document.querySelector(".sendInfo");
-
-sendInfo.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (cartData.length == 0) {
-    alert("你尚未選擇商品至購物車！");
-    return;
-  }
-
+  let receiver = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let mail = document.getElementById("mail").value;
+  let address = document.getElementById("address").value;
+  let payment = document.getElementById("payment").value;
+    
   let data = {
-    name:name,
-    tel:phone,
-    Email:mail,
-    address:address,
-    payment:payment
-  }
-
-  alert("已成功送出訂單！");
-  sendOrderInfo(data)
+    name: receiver,
+    tel: phone,
+    email: mail,
+    address: address,
+    payment: payment,
+  };
+  sendOrderInfo(data);
 });
 
 function sendOrderInfo(item) {
@@ -251,8 +239,8 @@ function sendOrderInfo(item) {
         data: {
           user: {
             name: item.name,
-            tel: item.phone,
-            email: item.mail,
+            tel: item.tel,
+            email: item.email,
             address: item.address,
             payment: item.payment,
           },
@@ -260,9 +248,11 @@ function sendOrderInfo(item) {
       }
     )
     .then(function (response) {
+      alert("訂單建立成功!");
       renderShoppingCart();
+      orderForm.reset();
     })
     .catch(function (error) {
-      console.log(error.message);
+      console.log(error);
     });
 }
