@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS直播班Final</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script type="module" crossorigin src="/JS-Final/assets/index-c223f4b9.js"></script>
-    <link rel="stylesheet" href="/JS-Final/assets/index-2e414eab.css">
+    <script type="module" crossorigin src="/JS-Final/assets/index-281c98ce.js"></script>
+    <link rel="stylesheet" href="/JS-Final/assets/index-59cfaa3d.css">
   </head>
   <body>
     <header>
@@ -324,7 +324,64 @@
         </div>
       </div>
     </section>
-
+    
+    <!-- 訂購填寫 -->
+    <section>
+      <div class="fillForm">
+        <div class="container">
+          <div class="title">填寫預訂資料</div>
+          <div class="row">
+            <div class="col-4 mx-auto">
+              <form class="orderForm needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="name" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="name" placeholder="請輸入姓名" required>
+                    <span class="invalid-feedback">
+                      必填！
+                    </span>
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">電話</label>
+                    <input type="text" class="form-control" id="phone" placeholder="請輸入電話" required>
+                    <span class="invalid-feedback">
+                      必填！
+                    </span>
+                </div>
+                <div class="mb-3">
+                  <label for="mail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="mail" placeholder="請輸入 Email" required>
+                    <span class="invalid-feedback">
+                      必填！
+                    </span>
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label">寄送地址</label>
+                    <input type="text" class="form-control" id="address" placeholder="請輸入寄送地址" required>
+                    <span class="invalid-feedback">
+                      必填！
+                    </span>
+                </div>
+                <div class="mb-5">
+                  <label for="payment" class="form-label">交易方式</label>
+                    <select class="form-select" aria-label="Default select example" id="payment" required>
+                      <option selected disabled value="">請選擇付款方式</option>
+                      <option value="ATM">ATM</option>
+                      <option value="信用卡">信用卡</option>
+                      <option value="超商付款">超商付款</option>
+                    </select>
+                    <span class="invalid-feedback">
+                      必填！
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-black sendInfo">送出預訂資料</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 
