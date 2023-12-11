@@ -1,6 +1,8 @@
 //api path:xuan
 //UID:SilbCe0IbhXlbMHF9Eu6JUataJQ2
 
+const { name } = require("ejs");
+
 const api_path = "xuan";
 const token = "SilbCe0IbhXlbMHF9Eu6JUataJQ2";
 const productList = document.querySelector(".productList");
@@ -11,6 +13,8 @@ const deleteAll = document.querySelector(".deleteAll");
 
 let productData = [];
 let cartData = [];
+
+init();
 
 function init() {
   axios
@@ -24,6 +28,16 @@ function init() {
     .catch(function (error) {
       console.log(error.response);
     });
+  // axios
+  //   .delete(
+  //     `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts`
+  //   )
+  //   .then(function (response) {
+  //     renderShoppingCart();
+  //   })
+  //   .catch(function (error) {
+  //     alert(error.response.data.message);
+  //   });
 }
 
 function renderProductList(data) {
@@ -55,7 +69,7 @@ function renderShoppingCart() {
     .then(function (response) {
       cartData = response.data.carts;
       let shoppingCartStr = "";
-      if (cartData.length==0) {
+      if (cartData.length == 0) {
         shoppingCartStr = `<tr>
         <td colspan="5" class="text-center text-dark">
           目前無商品內容
@@ -79,7 +93,9 @@ function renderShoppingCart() {
         </td>
         <td style="width: 60px;">
           <div class="btn cart-delete">
-            <i class="fa-solid fa-xmark fs-2" class="fs-1"></i>
+            <i class="fa-solid fa-xmark fs-2" class="fs-1" data-id="${
+              item.id
+            }"></i>
           </div>
         </td>
       </tr>`;
@@ -114,8 +130,20 @@ function addShoppingCart(id) {
     });
 }
 
-init();
+function deleteShoppingCart(cart_id) {
+  axios
+    .delete(
+      `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/carts/${cart_id}`
+    )
+    .then(function (response) {
+      renderShoppingCart();
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
+}
 
+// 商品分類篩選
 productSelect.addEventListener("change", function (e) {
   e.preventDefault();
   let selectTag = e.target.value;
@@ -141,6 +169,7 @@ productSelect.addEventListener("change", function (e) {
   }
 });
 
+// 加入購物車
 productList.addEventListener("click", function (e) {
   {
     e.preventDefault();
@@ -153,6 +182,18 @@ productList.addEventListener("click", function (e) {
   }
 });
 
+// 刪除部分品項
+tableBody.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (e.target.nodeName !== "I") {
+    return;
+  }
+  alert("確認要刪除此物品嗎？");
+  let cartId = e.target.getAttribute("data-id");
+  deleteShoppingCart(cartId);
+});
+
+// 刪除全部品項
 deleteAll.addEventListener("click", function (e) {
   e.preventDefault();
   axios
@@ -175,3 +216,53 @@ deleteAll.addEventListener("click", function (e) {
       alert(error.response.data.message);
     });
 });
+
+const name = document.getElementById("name").value;
+const phone = document.getElementById("phone").value;
+const mail = document.getElementById("mail").value;
+const address = document.getElementById("address").value;
+const payment = document.getElementById("payment").value;
+const sendInfo = document.querySelector(".sendInfo");
+
+sendInfo.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (cartData.length == 0) {
+    alert("你尚未選擇商品至購物車！");
+    return;
+  }
+
+  let data = {
+    name:name,
+    tel:phone,
+    Email:mail,
+    address:address,
+    payment:payment
+  }
+
+  alert("已成功送出訂單！");
+  sendOrderInfo(data)
+});
+
+function sendOrderInfo(item) {
+  axios
+    .post(
+      `https://livejs-api.hexschool.io/api/livejs/v1/customer/${api_path}/orders`,
+      {
+        data: {
+          user: {
+            name: item.name,
+            tel: item.phone,
+            email: item.mail,
+            address: item.address,
+            payment: item.payment,
+          },
+        },
+      }
+    )
+    .then(function (response) {
+      renderShoppingCart();
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
+}
